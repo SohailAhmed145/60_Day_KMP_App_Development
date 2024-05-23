@@ -1,5 +1,7 @@
 # # Day 2-4: Learning Jetpack Compose and Building a Simple Yoga App UI
 
+![Day_2-4](https://github.com/SohailAhmed145/60_Day_KMP_App_development/assets/111264528/1d22f113-4ef2-4761-928f-0fd3d5388403)
+
 Welcome to the **Day 2-4** section of the 60 Day KMP App Development Challenge! During these days, I delved into the basics of Jetpack Compose and built a simple static UI for a Yoga App. This README file documents the learning process.
 
 ## Overview
