@@ -1,5 +1,7 @@
 # Material Design Guidelines
 
+![unnamed](https://github.com/SohailAhmed145/60_Day_KMP_App_development/assets/111264528/71a36459-b192-47f5-b358-b8cef982e07f)
+
 Material Design is a design language developed by Google, emphasizing usability, visual consistency, and a responsive interface across various devices and platforms. Here's a comprehensive overview of the key guidelines in Material Design:
 
 ## 1. Material Metaphor
