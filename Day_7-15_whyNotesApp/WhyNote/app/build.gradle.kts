@@ -71,7 +71,5 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
-    val lottieVersion = "3.4.0"
-    implementation ("com.airbnb.android:lottie:$lottieVersion")
     implementation(libs.androidx.core.splashscreen)
 }
