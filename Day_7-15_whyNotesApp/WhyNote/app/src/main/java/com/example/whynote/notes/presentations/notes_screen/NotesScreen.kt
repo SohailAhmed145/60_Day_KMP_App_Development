@@ -1,5 +1,6 @@
 package com.example.whynote.notes.presentations.notes_screen
 
+import androidx.compose.foundation.background
 import androidx.compose.runtime.Composable
 
 
@@ -12,13 +13,20 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.ViewModel
 import com.example.whynote.notes.domain.models.Notes
+
+import com.example.whynote.notes.presentations.notes_screen.components.NotesItem
 import com.example.whynote.notes.presentations.util.components.MyTopAppBar
+import com.example.whynote.ui.theme.secondaryContainerLight
 
 @Composable
 fun NotesScreen(viewModel: NoteViewModel) {
-    MyTopAppBar()
+
+       MyTopAppBar()
+
     val notes by remember { mutableStateOf(viewModel.notes) }
     var title by remember { mutableStateOf("") }
     var content by remember { mutableStateOf("") }

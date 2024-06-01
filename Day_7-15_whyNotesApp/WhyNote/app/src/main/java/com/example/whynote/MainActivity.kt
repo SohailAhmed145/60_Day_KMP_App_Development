@@ -23,7 +23,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        Thread.sleep(3000)
+        Thread.sleep(1000)
         installSplashScreen()
         val repository = NoteRepository()
         val viewModelFactory = NoteViewModelFactory(repository)
@@ -40,6 +40,7 @@ class MainActivity : ComponentActivity() {
                             .background(MaterialTheme.colorScheme.primary)
                     ){
                        NotesScreen(viewModel)
+
                     }
 
                 }
