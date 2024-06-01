@@ -39,3 +39,18 @@ To run WhyNote locally, follow these steps:
 2. **Add a Note**: Click on the "Add" button to create a new note.
 3. **Edit a Note**: Tap on an existing note to edit its content.
 4. **Delete a Note**: Swipe a note to delete it.
+
+
+## Contributing
+
+Contributions are welcome! Please fork this repository and submit a pull request with your changes.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a pull request
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
