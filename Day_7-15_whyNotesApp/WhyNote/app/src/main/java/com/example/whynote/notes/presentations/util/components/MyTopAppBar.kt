@@ -15,6 +15,7 @@ import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -28,7 +29,7 @@ import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.example.whynote.R
-
+import com.example.whynote.ui.theme.tertiaryLight
 
 
 @Composable
@@ -41,7 +42,7 @@ fun MyTopAppBar(){
     ) {
         Row (
             modifier = Modifier
-                .background(Color(0xFFF2F2F2))
+                .background(MaterialTheme.colorScheme.secondaryContainer)
                 .fillMaxWidth()
                 .height(45.dp)
                 .padding(5.dp),
@@ -53,7 +54,7 @@ fun MyTopAppBar(){
                 Icon(
                     painter = painterResource(R.drawable.menu) ,
                     contentDescription = null,
-                    tint = Color.DarkGray,
+                    tint = MaterialTheme.colorScheme.primary,
                 )
             }
 
@@ -63,7 +64,7 @@ fun MyTopAppBar(){
                     .wrapContentHeight(Alignment.CenterVertically, true),
                 value = "", 
                 placeholder = {
-                              Text(text = "Search your notes", color = Color.DarkGray)
+                              Text(text = "Search your notes", color = MaterialTheme.colorScheme.primary)
                 },
                 onValueChange = {},
                 colors = TextFieldDefaults.colors(
@@ -75,7 +76,7 @@ fun MyTopAppBar(){
                 Icon(
                     painter = painterResource(R.drawable.grid_view),
                     contentDescription = null,
-                    tint = Color.DarkGray,
+                    tint = MaterialTheme.colorScheme.primary,
                 )
             }
 
@@ -83,7 +84,7 @@ fun MyTopAppBar(){
                 Icon(
                     painter = painterResource(R.drawable.account_circle),
                     contentDescription = null,
-                    tint = Color.DarkGray,
+                    tint = MaterialTheme.colorScheme.primary,
                     modifier = Modifier.size(40.dp)
                 )
             }

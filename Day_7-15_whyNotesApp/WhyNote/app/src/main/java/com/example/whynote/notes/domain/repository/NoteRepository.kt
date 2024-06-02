@@ -12,4 +12,5 @@ class NoteRepository {
     fun addNote(note: Notes) {
         notes.add(note)
     }
+
 }

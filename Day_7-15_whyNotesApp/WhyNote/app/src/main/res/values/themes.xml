@@ -10,6 +10,6 @@
              drawable. -->
         <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_notes_2</item>
         <!-- Set the theme of the Activity that follows your splash screen. -->
-        <item name="postSplashScreenTheme">@style/Theme.WhyNote</item>
+
     </style>
 </resources>

@@ -13,7 +13,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.ViewModelProvider
-import com.example.compose.WhyNoteTheme
+import com.example.whynote.ui.theme.WhyNoteTheme
 import com.example.whynote.notes.domain.repository.NoteRepository
 import com.example.whynote.notes.presentations.notes_screen.NoteViewModel
 import com.example.whynote.notes.presentations.notes_screen.NoteViewModelFactory
@@ -22,9 +22,9 @@ import com.example.whynote.notes.presentations.notes_screen.NotesScreen
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         Thread.sleep(1000)
         installSplashScreen()
+        enableEdgeToEdge()
         val repository = NoteRepository()
         val viewModelFactory = NoteViewModelFactory(repository)
         val viewModel = ViewModelProvider(this, viewModelFactory).get(NoteViewModel::class.java)
@@ -37,7 +37,7 @@ class MainActivity : ComponentActivity() {
                         modifier = Modifier
                             .fillMaxSize()
                             .padding(innerPadding)
-                            .background(MaterialTheme.colorScheme.primary)
+                            .background(MaterialTheme.colorScheme.onPrimary)
                     ){
                        NotesScreen(viewModel)
 
