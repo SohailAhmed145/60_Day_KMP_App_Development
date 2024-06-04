@@ -8,30 +8,37 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.FabPosition
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.example.whynote.notes.presentations.notes_screen.Destination
+import com.example.whynote.notes.presentations.notes_screen.HomeScreen
 import com.example.whynote.ui.theme.WhyNoteTheme
-import com.example.whynote.notes.domain.repository.NoteRepository
-import com.example.whynote.notes.presentations.notes_screen.NoteViewModel
-import com.example.whynote.notes.presentations.notes_screen.NoteViewModelFactory
-import com.example.whynote.notes.presentations.notes_screen.NotesScreen
+import com.example.whynote.notes.presentations.notes_screen.components.AppBarsTheme
+import com.example.whynote.notes.presentations.notes_screen.components.NoteDetailScreen
+
+
 
 class MainActivity : ComponentActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Thread.sleep(1000)
+        Thread.sleep(100)
         installSplashScreen()
         enableEdgeToEdge()
-        val repository = NoteRepository()
-        val viewModelFactory = NoteViewModelFactory(repository)
-        val viewModel = ViewModelProvider(this, viewModelFactory).get(NoteViewModel::class.java)
         setContent {
+
             WhyNoteTheme {
+               AppBarsTheme()
+
                 Scaffold (
-                    
+                    floatingActionButtonPosition = FabPosition.End,
                 ){innerPadding ->
                     Column (
                         modifier = Modifier
@@ -39,7 +46,7 @@ class MainActivity : ComponentActivity() {
                             .padding(innerPadding)
                             .background(MaterialTheme.colorScheme.onPrimary)
                     ){
-                       NotesScreen(viewModel)
+                       MyApp()
 
                     }
 
@@ -49,3 +56,23 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
+
+@Composable
+fun MyApp() {
+    MyNavigation()
+}
+
+@Composable
+fun MyNavigation(){
+    val navController = rememberNavController()
+
+    NavHost(navController = navController, startDestination = Destination.HomeScreen.toString()) {
+        composable(Destination.HomeScreen.toString()) {
+            HomeScreen(navController)
+        }
+        composable(Destination.NoteDetailScreen.toString()) {
+            NoteDetailScreen(navController)
+        }
+    }
+}
+

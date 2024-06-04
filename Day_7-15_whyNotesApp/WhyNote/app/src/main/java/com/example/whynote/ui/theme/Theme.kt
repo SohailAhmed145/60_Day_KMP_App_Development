@@ -16,6 +16,7 @@ import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 
 private val lightScheme = lightColorScheme(
@@ -113,14 +114,19 @@ fun WhyNoteTheme(
         darkTheme -> darkScheme
         else -> lightScheme
     }
-    val view = LocalView.current
-    if (!view.isInEditMode) {
-        SideEffect {
-            val window = (view.context as Activity).window
-            window.statusBarColor = colorScheme.primary.toArgb()
-                WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = darkTheme
-        }
-    }
+//    val view = LocalView.current
+//    if (!view.isInEditMode) {
+//        SideEffect {
+//            val window = (view.context as Activity).window
+//            if (darkTheme) {
+//                window.statusBarColor = Color(0xFF2F3131).toArgb()
+//            } else {
+//                Color(0xFFFFFFFF)
+//            }
+//            window.navigationBarColor = colorScheme.secondaryContainer.toArgb()
+//                WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = darkTheme
+//        }
+//    }
 
     MaterialTheme(
         colorScheme = colorScheme,
