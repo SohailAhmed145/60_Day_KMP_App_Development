@@ -97,57 +97,11 @@ fun BottomBar(navController: NavController) {
                }
 
            }
-                    }
+        }
 
 
-
-            }
-
-
-        
-//        
-//        BottomAppBar(
-//            containerColor = Color.Gray, //MaterialTheme.colorScheme.secondaryContainer
-//        ){
-//            Row(
-//                modifier = Modifier
-//                    .height(50.dp) 
-//                    .fillMaxWidth()
-//                    .background(Color.Cyan),
-//                horizontalArrangement = Arrangement.Start,
-//                verticalAlignment = Alignment.CenterVertically
-//            ){
-//
-//                IconButton(onClick = { /* do something */ }) {
-//                    Icon(
-//                        Icons.Outlined.Check,
-//                        contentDescription = "make list",
-//                        modifier = Modifier.size(30.dp),
-//                    )
-//
-//                }
-//                IconButton(onClick = { /* do something */ }) {
-//                    Icon(
-//                        painter = painterResource(R.drawable.brush),
-//                        contentDescription = "draw a note",
-//                        modifier = Modifier.size(30.dp),
-//                    )
-//                }
-//
-//                IconButton(onClick = { /* do something */ }) {
-//                    Icon(
-//                        painter = painterResource(R.drawable.image),
-//                        tint = MaterialTheme.colorScheme.primary,
-//                        contentDescription = "profile picture",
-//                        modifier = Modifier.size(30.dp),
-//                    )
-//                }
-//
-//
-//            }
-//        }
-//          
     }
-    
+}
+
 
 
