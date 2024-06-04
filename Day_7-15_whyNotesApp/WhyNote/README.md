@@ -12,8 +12,7 @@ WhyNote is a modern and minimalistic note-taking application built using Jetpack
 
 ## Screenshots
 
-![Home Screen](screenshots/home.png)
-![Note Editor](screenshots/editor.png)
+"will be uploaded soon"
 
 ## Installation
 
