@@ -4,6 +4,10 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.animation.AnimatedContentTransitionScope
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -21,7 +25,7 @@ import com.example.whynote.notes.presentations.notes_screen.Destination
 import com.example.whynote.notes.presentations.notes_screen.HomeScreen
 import com.example.whynote.ui.theme.WhyNoteTheme
 import com.example.whynote.notes.presentations.notes_screen.components.AppBarsTheme
-import com.example.whynote.notes.presentations.notes_screen.components.NoteDetailScreen
+import com.example.whynote.notes.presentations.notes_screen.NoteDetailScreen
 
 
 
@@ -66,7 +70,18 @@ fun MyApp() {
 fun MyNavigation(){
     val navController = rememberNavController()
 
-    NavHost(navController = navController, startDestination = Destination.HomeScreen.toString()) {
+    NavHost(
+        navController = navController,
+        startDestination = Destination.HomeScreen.toString(),
+        enterTransition = { fadeIn(animationSpec = tween(900)) +
+                slideIntoContainer(AnimatedContentTransitionScope.SlideDirection.Left, animationSpec = tween(900)) },
+        exitTransition = { fadeOut(animationSpec = tween(900)) +
+                slideOutOfContainer(AnimatedContentTransitionScope.SlideDirection.Left, animationSpec = tween(900)) },
+        popEnterTransition = { fadeIn(animationSpec = tween(900)) +
+                slideIntoContainer(AnimatedContentTransitionScope.SlideDirection.Right, animationSpec = tween(900)) },
+        popExitTransition = { fadeOut(animationSpec = tween(900)) +
+                slideOutOfContainer(AnimatedContentTransitionScope.SlideDirection.Right, animationSpec = tween(900)) },
+    ) {
         composable(Destination.HomeScreen.toString()) {
             HomeScreen(navController)
         }
