@@ -21,6 +21,7 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.whynote.notes.presentations.navigation_drawer.NavigationDrawer
 import com.example.whynote.notes.presentations.notes_screen.Destination
 import com.example.whynote.notes.presentations.notes_screen.HomeScreen
 import com.example.whynote.ui.theme.WhyNoteTheme
@@ -50,7 +51,8 @@ class MainActivity : ComponentActivity() {
                             .padding(innerPadding)
                             .background(MaterialTheme.colorScheme.onPrimary)
                     ){
-                       MyApp()
+//                       MyApp()
+                        NavigationDrawer()
 
                     }
 
