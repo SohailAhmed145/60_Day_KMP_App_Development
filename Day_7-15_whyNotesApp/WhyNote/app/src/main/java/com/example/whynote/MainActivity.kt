@@ -17,17 +17,19 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.whynote.notes.presentations.navigation_drawer.NavigationDrawer
+import com.example.whynote.notes.data.room.NoteViewModel
+import com.example.whynote.notes.data.room.NotesDB
+import com.example.whynote.notes.domain.repository.NoteRepository
 import com.example.whynote.notes.presentations.notes_screen.Destination
-import com.example.whynote.notes.presentations.notes_screen.HomeScreen
 import com.example.whynote.ui.theme.WhyNoteTheme
 import com.example.whynote.notes.presentations.notes_screen.components.AppBarsTheme
 import com.example.whynote.notes.presentations.notes_screen.NoteDetailScreen
-
+import com.example.whynote.notes.presentations.notes_screen.NoteScreen
 
 
 class MainActivity : ComponentActivity() {
@@ -51,9 +53,33 @@ class MainActivity : ComponentActivity() {
                             .padding(innerPadding)
                             .background(MaterialTheme.colorScheme.onPrimary)
                     ){
-//                       MyApp()
-                        NavigationDrawer()
+                        val mContext = LocalContext.current
+                        val db = NotesDB.getInstance(mContext)
+                        val repository = NoteRepository(db)
+                        val myViewModel = NoteViewModel(repository = repository)
 
+                        val navController = rememberNavController()
+
+                        NavHost(
+                            navController = navController,
+                            startDestination = Destination.NoteScreen.toString(),
+                            enterTransition = { fadeIn(animationSpec = tween(900)) +
+                                    slideIntoContainer(AnimatedContentTransitionScope.SlideDirection.Left, animationSpec = tween(900)) },
+                            exitTransition = { fadeOut(animationSpec = tween(900)) +
+                                    slideOutOfContainer(AnimatedContentTransitionScope.SlideDirection.Left, animationSpec = tween(900)) },
+                            popEnterTransition = { fadeIn(animationSpec = tween(900)) +
+                                    slideIntoContainer(AnimatedContentTransitionScope.SlideDirection.Right, animationSpec = tween(900)) },
+                            popExitTransition = { fadeOut(animationSpec = tween(900)) +
+                                    slideOutOfContainer(AnimatedContentTransitionScope.SlideDirection.Right, animationSpec = tween(900)) },
+                        ) {
+                            composable(Destination.NoteScreen.toString()) {
+                                NoteScreen(navController)
+                            }
+                            composable(Destination.NoteDetailScreen.toString()) {
+                                NoteDetailScreen(myViewModel,navController)
+                            }
+
+                        }
                     }
 
                 }
@@ -63,33 +89,4 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-@Composable
-fun MyApp() {
-    MyNavigation()
-}
-
-@Composable
-fun MyNavigation(){
-    val navController = rememberNavController()
-
-    NavHost(
-        navController = navController,
-        startDestination = Destination.HomeScreen.toString(),
-        enterTransition = { fadeIn(animationSpec = tween(900)) +
-                slideIntoContainer(AnimatedContentTransitionScope.SlideDirection.Left, animationSpec = tween(900)) },
-        exitTransition = { fadeOut(animationSpec = tween(900)) +
-                slideOutOfContainer(AnimatedContentTransitionScope.SlideDirection.Left, animationSpec = tween(900)) },
-        popEnterTransition = { fadeIn(animationSpec = tween(900)) +
-                slideIntoContainer(AnimatedContentTransitionScope.SlideDirection.Right, animationSpec = tween(900)) },
-        popExitTransition = { fadeOut(animationSpec = tween(900)) +
-                slideOutOfContainer(AnimatedContentTransitionScope.SlideDirection.Right, animationSpec = tween(900)) },
-    ) {
-        composable(Destination.HomeScreen.toString()) {
-            HomeScreen(navController)
-        }
-        composable(Destination.NoteDetailScreen.toString()) {
-            NoteDetailScreen(navController)
-        }
-    }
-}
 

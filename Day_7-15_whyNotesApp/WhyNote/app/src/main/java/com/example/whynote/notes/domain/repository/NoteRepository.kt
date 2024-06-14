@@ -1,16 +1,12 @@
 package com.example.whynote.notes.domain.repository
 
-import android.provider.ContactsContract
-import com.example.whynote.notes.domain.models.Notes
+import com.example.whynote.notes.domain.models.NoteEntity
+import com.example.whynote.notes.data.room.NotesDB
 
-// NoteRepository.kt
-class NoteRepository {
-    private val notes = mutableListOf<Notes>()
-
-    fun getNotes(): List<Notes> = notes
-
-    fun addNote(note: Notes) {
-        notes.add(note)
+class NoteRepository (val notesDB: NotesDB){
+    suspend fun addNoteToRoom(noteEntity: NoteEntity){
+        notesDB.noteDao().addNote(noteEntity)
     }
 
+    fun getAllNotes() = notesDB.noteDao().getAllNotes()
 }

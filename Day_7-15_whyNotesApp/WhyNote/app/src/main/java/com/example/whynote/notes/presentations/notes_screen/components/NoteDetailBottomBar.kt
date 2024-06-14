@@ -11,6 +11,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.ArrowBack
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
@@ -18,13 +19,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
 import com.example.whynote.R
-
-
+import com.example.whynote.notes.presentations.notes_screen.Destination
 
 @Composable
-fun NoteDetailTopBar(navController: NavController) {
+fun NoteDetailBottomBar(){
 
     Surface(
         modifier = Modifier
@@ -36,19 +35,35 @@ fun NoteDetailTopBar(navController: NavController) {
                 .fillMaxWidth()
                 .height(100.dp),
             verticalAlignment = Alignment.CenterVertically,
-        ){
-            IconButton(onClick = {
-                navController.popBackStack()
-            }) {
+        ) {
+            IconButton(onClick = { /*TODO*/ }) {
                 Icon(
-                    Icons.Outlined.ArrowBack,
+                    painter = painterResource(R.drawable.add_box),
                     contentDescription = null,
                     tint = MaterialTheme.colorScheme.primary,
                     modifier = Modifier.size(24.dp)
                 )
             }
 
-            Row (
+            IconButton(onClick = { /*TODO*/ }) {
+                Icon(
+                    painter = painterResource(R.drawable.palette),
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.primary,
+                    modifier = Modifier.size(24.dp)
+                )
+            }
+
+            IconButton(onClick = { /*TODO*/ }) {
+                Icon(
+                    painter = painterResource(R.drawable.format_color_text),
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.primary,
+                    modifier = Modifier.size(24.dp)
+                )
+            }
+
+            Row(
                 modifier = Modifier
                     .background(MaterialTheme.colorScheme.onPrimary)
                     .fillMaxWidth()
@@ -56,34 +71,22 @@ fun NoteDetailTopBar(navController: NavController) {
                 horizontalArrangement = Arrangement.End,
                 verticalAlignment = Alignment.CenterVertically
 
-            ){
-                IconButton(onClick = { /*TODO*/ }) {
-                    Icon(
-                        painter = painterResource(R.drawable.pin),
-                        contentDescription = null,
-                        tint = MaterialTheme.colorScheme.primary,
-                        modifier = Modifier.size(24.dp)
-                    )
-                }
+            ) {
+                IconButton(
+                    onClick = { /*TODO*/ },
+                    colors = IconButtonDefaults.iconButtonColors(
 
-                IconButton(onClick = { /*TODO*/ }) {
-                    Icon(
-                        painter = painterResource(R.drawable.add_alert),
-                        contentDescription = null,
-                        tint = MaterialTheme.colorScheme.primary,
-                        modifier = Modifier.size(24.dp)
                     )
-                }
-
-                IconButton(onClick = { /*TODO*/ }) {
+                ) {
                     Icon(
-                        painter = painterResource(R.drawable.archive),
+                        painter = painterResource(R.drawable.more_vert),
                         contentDescription = null,
                         tint = MaterialTheme.colorScheme.primary,
                         modifier = Modifier.size(24.dp)
                     )
                 }
             }
+
         }
 
     }

@@ -5,7 +5,7 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.ui.graphics.vector.ImageVector
 
 sealed class Destination(val route: String){
-    data object HomeScreen : Destination("HomeScreen")
+    data object NoteScreen : Destination("NoteScreen")
     data object NoteDetailScreen : Destination("NoteDetailScreen")
 }
 

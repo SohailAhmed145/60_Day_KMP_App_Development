@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id ("kotlin-kapt")
 }
 
 android {
@@ -50,6 +51,17 @@ android {
 }
 
 dependencies {
+
+
+    implementation(libs.androidx.room.runtime)
+    annotationProcessor(libs.room.compiler)
+
+    // To use Kotlin annotation processing tool (kapt) MUST be included
+    //noinspection KaptUsageInsteadOfKsp
+    kapt(libs.room.compiler)
+
+    // optional - Kotlin Extensions and Coroutines support for Room
+    implementation("androidx.room:room-ktx:")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

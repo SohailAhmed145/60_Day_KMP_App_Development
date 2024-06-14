@@ -12,7 +12,7 @@ import com.example.whynote.notes.presentations.util.components.BottomBar
 import com.example.whynote.notes.presentations.util.components.MyTopAppBar
 
 @Composable
-fun HomeScreen(navController: NavHostController) {
+fun NoteScreen(navController: NavHostController) {
        Column (
               modifier = Modifier.fillMaxSize(),
               verticalArrangement = Arrangement.SpaceBetween
