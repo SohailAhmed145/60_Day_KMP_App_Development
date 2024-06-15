@@ -18,6 +18,7 @@ fun NoteScreen(navController: NavHostController) {
               verticalArrangement = Arrangement.SpaceBetween
        ){
               MyTopAppBar()
+
               BottomBar(navController = navController)
        }
 
