@@ -73,7 +73,7 @@ class MainActivity : ComponentActivity() {
                                     slideOutOfContainer(AnimatedContentTransitionScope.SlideDirection.Right, animationSpec = tween(900)) },
                         ) {
                             composable(Destination.NoteScreen.toString()) {
-                                NoteScreen(navController)
+                                NoteScreen(viewModel = myViewModel ,navController)
                             }
                             composable(Destination.NoteDetailScreen.toString()) {
                                 NoteDetailScreen(myViewModel,navController)

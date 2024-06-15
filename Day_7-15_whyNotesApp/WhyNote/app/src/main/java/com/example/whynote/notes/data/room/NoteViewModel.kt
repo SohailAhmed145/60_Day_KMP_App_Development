@@ -13,4 +13,6 @@ class NoteViewModel (val repository: NoteRepository): ViewModel() {
             repository.addNoteToRoom(note)
         }
     }
+
+    val notes = repository.getAllNotes()
 }

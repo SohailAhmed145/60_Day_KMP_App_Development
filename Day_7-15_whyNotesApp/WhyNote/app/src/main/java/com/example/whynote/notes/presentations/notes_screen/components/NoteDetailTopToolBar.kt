@@ -1,5 +1,6 @@
 package com.example.whynote.notes.presentations.notes_screen.components
 
+import android.provider.ContactsContract.CommonDataKinds.Note
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
@@ -20,11 +21,12 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.whynote.R
-
+import com.example.whynote.notes.data.room.NoteViewModel
+import com.example.whynote.notes.domain.models.NoteEntity
 
 
 @Composable
-fun NoteDetailTopToolBar(navController: NavController) {
+fun NoteDetailTopToolBar(viewModel: NoteViewModel,navController: NavController) {
 
     Surface(
         modifier = Modifier
@@ -39,6 +41,7 @@ fun NoteDetailTopToolBar(navController: NavController) {
         ){
             IconButton(onClick = {
                 navController.popBackStack()
+                viewModel.addNote(NoteEntity(0, "",""))
             }) {
                 Icon(
                     Icons.Outlined.ArrowBack,

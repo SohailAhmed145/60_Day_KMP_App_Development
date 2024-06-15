@@ -36,7 +36,7 @@ fun NoteDetailScreen(viewModel: NoteViewModel,navController: NavHostController){
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.onPrimary)
     ) {
-        NoteDetailTopToolBar(navController = navController)
+        NoteDetailTopToolBar(viewModel, navController)
         Column (
             verticalArrangement = Arrangement.Top,
             horizontalAlignment = Alignment.Start
