@@ -21,8 +21,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavHostController
 import com.example.whynote.notes.data.room.NoteViewModel
-import com.example.whynote.notes.presentations.notes_screen.components.NoteDetailBottomBar
-import com.example.whynote.notes.presentations.notes_screen.components.NoteDetailTopBar
+import com.example.whynote.notes.presentations.notes_screen.components.NoteDetailBottomToolBar
+import com.example.whynote.notes.presentations.notes_screen.components.NoteDetailTopToolBar
 
 
 @Composable
@@ -36,7 +36,7 @@ fun NoteDetailScreen(viewModel: NoteViewModel,navController: NavHostController){
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.onPrimary)
     ) {
-        NoteDetailTopBar(navController = navController)
+        NoteDetailTopToolBar(navController = navController)
         Column (
             verticalArrangement = Arrangement.Top,
             horizontalAlignment = Alignment.Start
@@ -95,7 +95,7 @@ fun NoteDetailScreen(viewModel: NoteViewModel,navController: NavHostController){
                 )
             )
         }
-        NoteDetailBottomBar()
+        NoteDetailBottomToolBar()
 
     }
 
