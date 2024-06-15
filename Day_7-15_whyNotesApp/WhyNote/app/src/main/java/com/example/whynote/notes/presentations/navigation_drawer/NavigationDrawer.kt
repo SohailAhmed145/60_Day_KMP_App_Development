@@ -34,7 +34,7 @@ import com.example.whynote.notes.presentations.util.components.MyTopAppBar
 import kotlinx.coroutines.launch
 
 @Composable
-fun NavigationDrawer(navController: NavController){
+fun NavigationDrawer(){
 
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
     val scope = rememberCoroutineScope()
@@ -110,7 +110,6 @@ fun NavigationDrawer(navController: NavController){
                        drawerState.open()
                    }
                },
-               navController = navController
            )
 
        }
@@ -127,13 +126,12 @@ data class DrawerItem(
 @Composable
 fun Content(
     onClick: () -> Unit,
-    navController: NavController
+
 ){
     Column (
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.SpaceBetween
     ){
-        MyTopAppBar()
-        BottomBar(navController = navController)
+
     }
 }
