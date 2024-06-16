@@ -34,7 +34,7 @@ fun NoteCard(viewModel: NoteViewModel, note: NoteEntity, navController: NavContr
             navController.navigate("NoteDetailScreen")
         },
         modifier = Modifier
-            .fillMaxWidth(0.5f)
+            .fillMaxWidth()
             .clip(
                 RoundedCornerShape(10.dp)
             )

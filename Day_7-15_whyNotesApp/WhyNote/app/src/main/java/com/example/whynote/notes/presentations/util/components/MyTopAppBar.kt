@@ -31,7 +31,7 @@ import com.example.whynote.R
 fun MyTopAppBar(){
 
     Surface(
-        modifier = Modifier.padding(top = 10.dp, start = 15.dp, end = 15.dp),
+        modifier = Modifier.padding(top = 10.dp, start = 15.dp, end = 15.dp, bottom = 10.dp),
         shape = RoundedCornerShape(35.dp),
     ) {
         Row (

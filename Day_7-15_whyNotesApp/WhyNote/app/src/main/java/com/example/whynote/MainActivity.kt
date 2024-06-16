@@ -30,6 +30,10 @@ import com.example.whynote.ui.theme.WhyNoteTheme
 import com.example.whynote.notes.presentations.notes_screen.components.AppBarsTheme
 import com.example.whynote.notes.presentations.notes_screen.NoteDetailScreen
 import com.example.whynote.notes.presentations.notes_screen.NoteScreen
+import com.example.whynote.notes.presentations.notes_screen.components.Fab
+import com.example.whynote.notes.presentations.notes_screen.components.NoteContent
+import com.example.whynote.notes.presentations.util.components.BottomBar
+import com.example.whynote.notes.presentations.util.components.MyTopAppBar
 
 
 class MainActivity : ComponentActivity() {
@@ -43,6 +47,11 @@ class MainActivity : ComponentActivity() {
 
             WhyNoteTheme {
                AppBarsTheme()
+                val mContext = LocalContext.current
+                val db = NotesDB.getInstance(mContext)
+                val repository = NoteRepository(db)
+                val myViewModel = NoteViewModel(repository = repository)
+                val navController = rememberNavController()
 
                 Scaffold (
                     floatingActionButtonPosition = FabPosition.End,
@@ -53,13 +62,6 @@ class MainActivity : ComponentActivity() {
                             .padding(innerPadding)
                             .background(MaterialTheme.colorScheme.onPrimary)
                     ){
-                        val mContext = LocalContext.current
-                        val db = NotesDB.getInstance(mContext)
-                        val repository = NoteRepository(db)
-                        val myViewModel = NoteViewModel(repository = repository)
-
-                        val navController = rememberNavController()
-
                         NavHost(
                             navController = navController,
                             startDestination = Destination.NoteScreen.toString(),
