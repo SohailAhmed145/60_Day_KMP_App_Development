@@ -24,7 +24,7 @@ fun Fab(navController: NavController) {
    Box(
        modifier = Modifier
            .fillMaxWidth()
-           .padding(end = 5.dp, bottom = 25.dp),
+           .padding(end = 20.dp, bottom = 25.dp),
        contentAlignment = Alignment.BottomEnd
    ){
        FloatingActionButton(

@@ -49,9 +49,6 @@ import com.example.whynote.notes.presentations.notes_screen.components.Fab
 @Composable
 fun BottomBar(navController: NavController) {
     Column (
-//        modifier = Modifier
-//            .fillMaxWidth()
-//            .fillMaxHeight(),
         verticalArrangement = Arrangement.Bottom,
         horizontalAlignment = Alignment.CenterHorizontally
     ){
