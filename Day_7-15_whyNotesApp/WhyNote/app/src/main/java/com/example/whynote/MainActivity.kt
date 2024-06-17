@@ -65,7 +65,7 @@ class MainActivity : ComponentActivity() {
                             .padding(innerPadding)
                             .background(MaterialTheme.colorScheme.onPrimary)
                     ) {
-                        NavigationDrawer(myViewModel, navController)
+//                        NavigationDrawer(myViewModel, navController)
                         NavHost(
                             navController = navController,
                             startDestination = Destination.NoteScreen.toString(),

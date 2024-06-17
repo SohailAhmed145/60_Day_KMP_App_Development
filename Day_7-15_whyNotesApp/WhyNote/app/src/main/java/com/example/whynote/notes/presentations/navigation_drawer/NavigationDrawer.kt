@@ -42,7 +42,7 @@ import com.example.whynote.ui.theme.WhyNoteTheme
 import kotlinx.coroutines.launch
 
 @Composable
-fun NavigationDrawer(viewModel: NoteViewModel, navController: NavHostController) {
+fun NavigationDrawer(viewModel: NoteViewModel, navController: NavHostController){
 
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
     val scope = rememberCoroutineScope()
@@ -52,12 +52,12 @@ fun NavigationDrawer(viewModel: NoteViewModel, navController: NavHostController)
             label = "Notes",
             icon = painterResource(id = R.drawable.note),
             secondaryLabel = "1"
-        ),
+        ) ,
         DrawerItem(
             label = "Reminders",
             icon = painterResource(id = R.drawable.reminders),
             secondaryLabel = "2"
-        ),
+        ) ,
 
         DrawerItem(
             label = "Create new label",
@@ -85,27 +85,27 @@ fun NavigationDrawer(viewModel: NoteViewModel, navController: NavHostController)
             secondaryLabel = "5"
         )
     )
-    var selectedItem by remember {
+    var selectedItem by remember{
         mutableStateOf(items[0])
     }
 
 
     ModalNavigationDrawer(
         drawerState = drawerState,
-        scrimColor = MaterialTheme.colorScheme.scrim,
+        scrimColor =  MaterialTheme.colorScheme.scrim,
         gesturesEnabled = true,
         drawerContent = {
-            ModalDrawerSheet(
+            ModalDrawerSheet (
                 modifier = Modifier
                     .fillMaxWidth(0.85f),
                 drawerContainerColor = MaterialTheme.colorScheme.onPrimary,
-            ) {
+            ){
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(start = 25.dp, top = 1.dp, bottom = 15.dp),
                     contentAlignment = Alignment.TopStart
-                ) {
+                ){
                     Text(text = "Header", style = MaterialTheme.typography.headlineLarge)
                 }
                 items.forEach { item ->
@@ -124,23 +124,23 @@ fun NavigationDrawer(viewModel: NoteViewModel, navController: NavHostController)
                                 drawerState.close()
                             }
                             selectedItem = item
-                            when (item.label) {
+                            when(item.label){
                                 "Notes" -> navController.navigate("NoteScreen")
-                                "Reminders" -> navController.navigate("RemindersScreen")
-                                "Create new label" -> navController.navigate("CreateLabelScreen")
                             }
+
+
 
 
                         },
 
-                        )
+                    )
 
                 }
             }
         },
 
-        ) {
-        NoteScreen(viewModel, navController)
+    ){
+
     }
 
 }
