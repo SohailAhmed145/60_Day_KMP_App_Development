@@ -1,8 +1,6 @@
 package com.example.whynote.notes.presentations.util.components
 
 
-
-
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -48,54 +46,54 @@ import com.example.whynote.notes.presentations.notes_screen.components.Fab
 
 @Composable
 fun BottomBar(navController: NavController) {
-    Column (
+    Column(
         verticalArrangement = Arrangement.Bottom,
         horizontalAlignment = Alignment.CenterHorizontally
-    ){
-      
+    ) {
+
         Fab(navController = navController)
 
-        Box (
+        Box(
             modifier = Modifier
                 .width(200.dp)
                 .clip(RoundedCornerShape(15.dp))
                 .background(MaterialTheme.colorScheme.secondaryContainer),
-        ){
-           Row (
-               modifier = Modifier
-                   .height(50.dp)
-                   .fillMaxWidth(),
-               horizontalArrangement = Arrangement.SpaceEvenly,
-               verticalAlignment = Alignment.CenterVertically
-           ){
-               IconButton(onClick = { /* do something */ }) {
-                   Icon(
-                       Icons.Outlined.Check,
-                       contentDescription = "make list",
-                       modifier = Modifier.size(30.dp),
-                       tint = MaterialTheme.colorScheme.primary
-                   )
+        ) {
+            Row(
+                modifier = Modifier
+                    .height(50.dp)
+                    .fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceEvenly,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                IconButton(onClick = { /* do something */ }) {
+                    Icon(
+                        Icons.Outlined.Check,
+                        contentDescription = "make list",
+                        modifier = Modifier.size(30.dp),
+                        tint = MaterialTheme.colorScheme.primary
+                    )
 
-               }
-               IconButton(onClick = { /* do something */ }) {
-                   Icon(
-                       painter = painterResource(R.drawable.brush),
-                       contentDescription = "draw a note",
-                       modifier = Modifier.size(30.dp),
-                       tint = MaterialTheme.colorScheme.primary
-                   )
-               }
+                }
+                IconButton(onClick = { /* do something */ }) {
+                    Icon(
+                        painter = painterResource(R.drawable.brush),
+                        contentDescription = "draw a note",
+                        modifier = Modifier.size(30.dp),
+                        tint = MaterialTheme.colorScheme.primary
+                    )
+                }
 
-               IconButton(onClick = { /* do something */ }) {
-                   Icon(
-                       painter = painterResource(R.drawable.image),
-                       tint = MaterialTheme.colorScheme.primary,
-                       contentDescription = "profile picture",
-                       modifier = Modifier.size(30.dp),
-                   )
-               }
+                IconButton(onClick = { /* do something */ }) {
+                    Icon(
+                        painter = painterResource(R.drawable.image),
+                        tint = MaterialTheme.colorScheme.primary,
+                        contentDescription = "profile picture",
+                        modifier = Modifier.size(30.dp),
+                    )
+                }
 
-           }
+            }
         }
 
 

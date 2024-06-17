@@ -13,6 +13,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalDrawerSheet
 import androidx.compose.material3.ModalNavigationDrawer
 import androidx.compose.material3.NavigationDrawerItem
+import androidx.compose.material3.NavigationDrawerItemDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
@@ -28,66 +29,93 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.whynote.R
+import com.example.whynote.notes.data.room.NoteViewModel
+import com.example.whynote.notes.data.room.NotesDB
+import com.example.whynote.notes.domain.repository.NoteRepository
+import com.example.whynote.notes.presentations.notes_screen.NoteScreen
 import com.example.whynote.notes.presentations.util.components.BottomBar
 import com.example.whynote.notes.presentations.util.components.MyTopAppBar
+import com.example.whynote.ui.theme.WhyNoteTheme
 import kotlinx.coroutines.launch
 
 @Composable
-fun NavigationDrawer(){
+fun NavigationDrawer(viewModel: NoteViewModel, navController: NavHostController) {
 
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
     val scope = rememberCoroutineScope()
 
     val items = listOf(
         DrawerItem(
-            label = "Notes", icon = painterResource(id = R.drawable.note), secondaryLabel = "1"
-        ) ,
+            label = "Notes",
+            icon = painterResource(id = R.drawable.note),
+            secondaryLabel = "1"
+        ),
         DrawerItem(
-            label = "Reminders", icon = painterResource(id = R.drawable.reminders), secondaryLabel = "2"
-        ) ,
+            label = "Reminders",
+            icon = painterResource(id = R.drawable.reminders),
+            secondaryLabel = "2"
+        ),
 
         DrawerItem(
-            label = "Create new label", icon = painterResource(id = R.drawable.newlabel), secondaryLabel = "3"
+            label = "Create new label",
+            icon = painterResource(id = R.drawable.newlabel),
+            secondaryLabel = "3"
         ),
         DrawerItem(
-            label = "Archive", icon = painterResource(id = R.drawable.archive), secondaryLabel = "4"
+            label = "Archive",
+            icon = painterResource(id = R.drawable.archive),
+            secondaryLabel = "4"
         ),
         DrawerItem(
-            label = "Trash", icon = painterResource(id = R.drawable.trash), secondaryLabel = "5"
+            label = "Trash",
+            icon = painterResource(id = R.drawable.trash),
+            secondaryLabel = "5"
         ),
         DrawerItem(
-            label = "Settings", icon = painterResource(id = R.drawable.settings), secondaryLabel = "4"
+            label = "Settings",
+            icon = painterResource(id = R.drawable.settings),
+            secondaryLabel = "4"
         ),
         DrawerItem(
-            label = "Help & feedback", icon = painterResource(id = R.drawable.help), secondaryLabel = "5"
+            label = "Help & feedback",
+            icon = painterResource(id = R.drawable.help),
+            secondaryLabel = "5"
         )
     )
-    var selectedItem by remember{
+    var selectedItem by remember {
         mutableStateOf(items[0])
     }
 
 
     ModalNavigationDrawer(
         drawerState = drawerState,
-        scrimColor =  MaterialTheme.colorScheme.scrim,
+        scrimColor = MaterialTheme.colorScheme.scrim,
+        gesturesEnabled = true,
         drawerContent = {
-            ModalDrawerSheet (
+            ModalDrawerSheet(
                 modifier = Modifier
-                    .fillMaxWidth(0.85f)
-                    .background(MaterialTheme.colorScheme.onPrimary)
-            ){
+                    .fillMaxWidth(0.85f),
+                drawerContainerColor = MaterialTheme.colorScheme.onPrimary,
+            ) {
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(start = 25.dp, top = 1.dp, bottom = 15.dp),
                     contentAlignment = Alignment.TopStart
-                ){
+                ) {
                     Text(text = "Header", style = MaterialTheme.typography.headlineLarge)
                 }
                 items.forEach { item ->
 
                     NavigationDrawerItem(
+                        modifier = Modifier.padding(horizontal = 15.dp),
+                        colors = NavigationDrawerItemDefaults.colors(
+                            unselectedContainerColor = MaterialTheme.colorScheme.onPrimary,
+                            selectedContainerColor = MaterialTheme.colorScheme.secondaryContainer
+                        ),
                         icon = { Icon(painter = item.icon, contentDescription = item.label) },
                         label = { Text(text = item.label) },
                         selected = item == selectedItem,
@@ -95,25 +123,25 @@ fun NavigationDrawer(){
                             scope.launch {
                                 drawerState.close()
                             }
-                                  selectedItem = item
-                                  },
+                            selectedItem = item
+                            when (item.label) {
+                                "Notes" -> navController.navigate("NoteScreen")
+                                "Reminders" -> navController.navigate("RemindersScreen")
+                                "Create new label" -> navController.navigate("CreateLabelScreen")
+                            }
 
-                    )
+
+                        },
+
+                        )
 
                 }
             }
         },
-       content = {
-           Content(
-               onClick = {
-                   scope.launch {
-                       drawerState.open()
-                   }
-               },
-           )
 
-       }
-    )
+        ) {
+        NoteScreen(viewModel, navController)
+    }
 
 }
 
@@ -122,16 +150,3 @@ data class DrawerItem(
     val icon: Painter,
     val secondaryLabel: String
 )
-
-@Composable
-fun Content(
-    onClick: () -> Unit,
-
-){
-    Column (
-        modifier = Modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.SpaceBetween
-    ){
-
-    }
-}

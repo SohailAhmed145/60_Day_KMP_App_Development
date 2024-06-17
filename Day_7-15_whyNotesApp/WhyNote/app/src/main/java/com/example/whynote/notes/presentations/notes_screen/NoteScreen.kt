@@ -24,14 +24,7 @@ import com.example.whynote.notes.presentations.util.components.MyTopAppBar
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun NoteScreen(viewModel: NoteViewModel,navController: NavHostController) {
-//       Column (
-//              modifier = Modifier.fillMaxSize(),
-//              verticalArrangement = Arrangement.SpaceBetween
-//       ){
-//              MyTopAppBar()
-//              NoteContent(viewModel, navController)
-//              BottomBar(navController)
-//       }
+
        Scaffold(
               modifier = Modifier.fillMaxSize(),
               containerColor = MaterialTheme.colorScheme.onPrimary,

@@ -27,6 +27,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.whynote.notes.data.room.NoteViewModel
 import com.example.whynote.notes.data.room.NotesDB
 import com.example.whynote.notes.domain.repository.NoteRepository
+import com.example.whynote.notes.presentations.navigation_drawer.NavigationDrawer
 import com.example.whynote.notes.presentations.notes_screen.Destination
 import com.example.whynote.ui.theme.WhyNoteTheme
 import com.example.whynote.notes.presentations.notes_screen.components.AppBarsTheme
@@ -48,39 +49,60 @@ class MainActivity : ComponentActivity() {
         setContent {
 
             WhyNoteTheme {
-               AppBarsTheme()
+                AppBarsTheme()
                 val mContext = LocalContext.current
                 val db = NotesDB.getInstance(mContext)
                 val repository = NoteRepository(db)
                 val myViewModel = NoteViewModel(repository = repository)
                 val navController = rememberNavController()
 
-                Scaffold (
+                Scaffold(
 
-                ){innerPadding ->
-                    Column (
+                ) { innerPadding ->
+                    Column(
                         modifier = Modifier
                             .fillMaxSize()
                             .padding(innerPadding)
                             .background(MaterialTheme.colorScheme.onPrimary)
-                    ){
+                    ) {
+                        NavigationDrawer(myViewModel, navController)
                         NavHost(
                             navController = navController,
                             startDestination = Destination.NoteScreen.toString(),
-                            enterTransition = { fadeIn(animationSpec = tween(900)) +
-                                    slideIntoContainer(AnimatedContentTransitionScope.SlideDirection.Left, animationSpec = tween(900)) },
-                            exitTransition = { fadeOut(animationSpec = tween(900)) +
-                                    slideOutOfContainer(AnimatedContentTransitionScope.SlideDirection.Left, animationSpec = tween(900)) },
-                            popEnterTransition = { fadeIn(animationSpec = tween(900)) +
-                                    slideIntoContainer(AnimatedContentTransitionScope.SlideDirection.Right, animationSpec = tween(900)) },
-                            popExitTransition = { fadeOut(animationSpec = tween(900)) +
-                                    slideOutOfContainer(AnimatedContentTransitionScope.SlideDirection.Right, animationSpec = tween(900)) },
+                            enterTransition = {
+                                fadeIn(animationSpec = tween(900)) +
+                                        slideIntoContainer(
+                                            AnimatedContentTransitionScope.SlideDirection.Left,
+                                            animationSpec = tween(900)
+                                        )
+                            },
+                            exitTransition = {
+                                fadeOut(animationSpec = tween(900)) +
+                                        slideOutOfContainer(
+                                            AnimatedContentTransitionScope.SlideDirection.Left,
+                                            animationSpec = tween(900)
+                                        )
+                            },
+                            popEnterTransition = {
+                                fadeIn(animationSpec = tween(900)) +
+                                        slideIntoContainer(
+                                            AnimatedContentTransitionScope.SlideDirection.Right,
+                                            animationSpec = tween(900)
+                                        )
+                            },
+                            popExitTransition = {
+                                fadeOut(animationSpec = tween(900)) +
+                                        slideOutOfContainer(
+                                            AnimatedContentTransitionScope.SlideDirection.Right,
+                                            animationSpec = tween(900)
+                                        )
+                            },
                         ) {
                             composable(Destination.NoteScreen.toString()) {
-                                NoteScreen(viewModel = myViewModel ,navController)
+                                NoteScreen(viewModel = myViewModel, navController)
                             }
                             composable(Destination.NoteDetailScreen.toString()) {
-                                NoteDetailScreen(myViewModel,navController)
+                                NoteDetailScreen(myViewModel, navController)
                             }
 
                         }
