@@ -26,6 +26,7 @@ import androidx.navigation.NavController
 import com.example.whynote.R
 import com.example.whynote.notes.data.room.NoteViewModel
 import com.example.whynote.notes.domain.models.NoteEntity
+import com.example.whynote.notes.presentations.notes_screen.Destination
 
 
 @Composable
@@ -44,7 +45,7 @@ fun NoteDetailTopToolBar(viewModel: NoteViewModel,navController: NavController) 
             verticalAlignment = Alignment.CenterVertically,
         ){
             IconButton(onClick = {
-                navController.popBackStack()
+                navController.navigate(Destination.NoteScreen.toString())
             }) {
                 Icon(
                     Icons.Outlined.ArrowBack,

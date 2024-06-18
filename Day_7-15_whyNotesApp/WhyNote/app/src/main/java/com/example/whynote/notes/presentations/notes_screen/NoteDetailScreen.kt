@@ -36,7 +36,7 @@ fun NoteDetailScreen(viewModel: NoteViewModel,navController: NavHostController){
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(MaterialTheme.colorScheme.onPrimary)
+            .background(MaterialTheme.colorScheme.onPrimary),
     ) {
         NoteDetailTopToolBar(viewModel, navController)
         Column (
@@ -78,7 +78,7 @@ fun NoteDetailScreen(viewModel: NoteViewModel,navController: NavHostController){
                 },
                 modifier = Modifier
                     .fillMaxWidth()
-                    .fillMaxHeight(0.9f)
+                    .fillMaxHeight(0.85f)
                     .background(MaterialTheme.colorScheme.onPrimary),
 
                 placeholder = {

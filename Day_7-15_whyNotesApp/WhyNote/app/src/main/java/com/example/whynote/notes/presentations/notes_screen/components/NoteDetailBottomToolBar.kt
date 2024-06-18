@@ -2,6 +2,8 @@ package com.example.whynote.notes.presentations.notes_screen.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -20,12 +22,13 @@ import androidx.compose.ui.unit.dp
 import com.example.whynote.R
 
 @Composable
-fun NoteDetailBottomToolBar(){
+fun NoteDetailBottomToolBar() {
 
-    Surface(
+    Column (
         modifier = Modifier
-            .fillMaxWidth(),
-    ) {
+            .fillMaxWidth()
+            .height(100.dp),
+    ){
         Row(
             modifier = Modifier
                 .background(MaterialTheme.colorScheme.onPrimary)
@@ -87,4 +90,5 @@ fun NoteDetailBottomToolBar(){
         }
 
     }
+
 }
