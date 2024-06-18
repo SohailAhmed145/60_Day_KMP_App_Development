@@ -10,6 +10,11 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material3.DrawerState
+import androidx.compose.material3.DrawerValue
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -17,18 +22,25 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
+import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.example.whynote.R
-
+import kotlinx.coroutines.launch
 
 
 @Composable
-fun MyTopAppBar(){
+fun MyTopAppBar(drawerState: DrawerState){
+
+    val scope = rememberCoroutineScope()
+
 
     Surface(
         modifier = Modifier.padding(top = 10.dp, start = 15.dp, end = 15.dp, bottom = 10.dp),
@@ -45,7 +57,9 @@ fun MyTopAppBar(){
 
         ){
             IconButton(onClick = {
-
+                scope.launch {
+                    drawerState.open()
+                }
             }) {
                 Icon(
                     painter = painterResource(R.drawable.menu) ,
@@ -58,7 +72,7 @@ fun MyTopAppBar(){
                 modifier = Modifier
                     .width(180.dp)
                     .wrapContentHeight(Alignment.CenterVertically, true),
-                value = "", 
+                value = "",
                 placeholder = {
                               Text(text = "Search your notes", color = MaterialTheme.colorScheme.primary)
                 },
