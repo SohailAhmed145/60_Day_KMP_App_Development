@@ -1,10 +1,7 @@
 package com.example.whynote.notes.presentations.navigation_drawer
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
+
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.DrawerValue
@@ -24,21 +21,13 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
+import com.example.whynote.MyApp
 import com.example.whynote.R
 import com.example.whynote.notes.data.room.NoteViewModel
-import com.example.whynote.notes.data.room.NotesDB
-import com.example.whynote.notes.domain.repository.NoteRepository
-import com.example.whynote.notes.presentations.notes_screen.NoteScreen
-import com.example.whynote.notes.presentations.util.components.BottomBar
-import com.example.whynote.notes.presentations.util.components.MyTopAppBar
-import com.example.whynote.ui.theme.WhyNoteTheme
 import kotlinx.coroutines.launch
 
 @Composable
@@ -140,7 +129,7 @@ fun NavigationDrawer(viewModel: NoteViewModel, navController: NavHostController)
         },
 
     ){
-
+        MyApp(viewModel,navController)
     }
 
 }
