@@ -1,5 +1,6 @@
 package com.example.whynote.notes.presentations.notes_screen
 
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -7,12 +8,13 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.wrapContentHeight
-import androidx.compose.material3.Button
+import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -32,6 +34,10 @@ fun NoteDetailScreen(viewModel: NoteViewModel,navController: NavHostController){
 
     var inputTitle by remember{ mutableStateOf("") }
     var inputNoteContent by remember{ mutableStateOf("") }
+
+
+
+
 
     Column(
         modifier = Modifier
@@ -62,6 +68,8 @@ fun NoteDetailScreen(viewModel: NoteViewModel,navController: NavHostController){
                     )
                 },
                 minLines = 1,
+
+
                 colors = TextFieldDefaults.colors(
                     focusedContainerColor = Color.Transparent,
                     unfocusedContainerColor = Color.Transparent,
@@ -97,11 +105,6 @@ fun NoteDetailScreen(viewModel: NoteViewModel,navController: NavHostController){
                 )
             )
 
-            Button(onClick = {
-                viewModel.addNote(NoteEntity(0,inputTitle,inputNoteContent))
-            }) {
-                Text(text = "Save")
-            }
         }
         NoteDetailBottomToolBar()
 

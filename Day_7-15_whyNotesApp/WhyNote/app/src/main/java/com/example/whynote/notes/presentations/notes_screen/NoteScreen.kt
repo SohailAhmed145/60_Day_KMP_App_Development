@@ -36,7 +36,7 @@ fun NoteScreen(viewModel: NoteViewModel,navController: NavHostController) {
               modifier = Modifier.fillMaxSize(),
               containerColor = MaterialTheme.colorScheme.onPrimary,
               topBar = {
-                     MyTopAppBar()
+//                     MyTopAppBar()
               },
               bottomBar = {
                      BottomBar(navController)
