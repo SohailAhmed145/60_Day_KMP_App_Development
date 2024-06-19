@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material3.DrawerState
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -63,6 +64,9 @@ class MainActivity : ComponentActivity() {
                 val repository = NoteRepository(db)
                 val myViewModel = NoteViewModel(repository = repository)
                 val navController = rememberNavController()
+                val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
+
+
 
                 Scaffold(
 
@@ -73,9 +77,7 @@ class MainActivity : ComponentActivity() {
                             .padding(innerPadding)
                             .background(MaterialTheme.colorScheme.onPrimary)
                     ) {
-                        NavigationDrawer(myViewModel, navController)
-
-
+                        MyApplication(myViewModel, navController, drawerState )
                     }
 
                 }
@@ -84,52 +86,6 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-@Composable
-fun MyApp(
-    myViewModel: NoteViewModel,
-    navController: NavHostController
-) {
-    NavHost(
-        navController = navController,
-        startDestination = Destination.NoteScreen.toString(),
-//        enterTransition = {
-//            fadeIn(animationSpec = tween(900)) +
-//                    slideIntoContainer(
-//                        AnimatedContentTransitionScope.SlideDirection.Left,
-//                        animationSpec = tween(900)
-//                    )
-//        },
-        exitTransition = {
-            fadeOut(animationSpec = tween(900)) +
-                    slideOutOfContainer(
-                        AnimatedContentTransitionScope.SlideDirection.Left,
-                        animationSpec = tween(900)
-                    )
-        },
-//        popEnterTransition = {
-//            fadeIn(animationSpec = tween(900)) +
-//                    slideIntoContainer(
-//                        AnimatedContentTransitionScope.SlideDirection.Right,
-//                        animationSpec = tween(900)
-//                    )
-//        },
-//        popExitTransition = {
-//            fadeOut(animationSpec = tween(900)) +
-//                    slideOutOfContainer(
-//                        AnimatedContentTransitionScope.SlideDirection.Right,
-//                        animationSpec = tween(900)
-//                    )
-//        },
-    ) {
-        composable(Destination.NoteScreen.toString()) {
-            NoteScreen(viewModel = myViewModel, navController)
-        }
-        composable(Destination.NoteDetailScreen.toString()) {
-            NoteDetailScreen(myViewModel, navController)
-        }
-
-    }
-}
 
 
 

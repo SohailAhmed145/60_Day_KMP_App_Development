@@ -1,5 +1,6 @@
 package com.example.whynote.notes.presentations.notes_screen.components
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -38,17 +39,19 @@ fun NoteCard(viewModel: NoteViewModel, note: NoteEntity, navController: NavContr
             navController.navigate("NoteDetailScreen")
         },
         modifier = Modifier
-            .fillMaxWidth()
+            .fillMaxSize()
             .clip(
                 RoundedCornerShape(10.dp)
             )
             .padding(4.dp),
-        elevation = CardDefaults.cardElevation(2.dp)
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.onPrimary
+        ),
     ) {
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .border(1.dp, Color.Gray, RoundedCornerShape(18.dp))
+                .border((0.5).dp, Color.Gray, RoundedCornerShape(18.dp))
                 .padding(8.dp),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
