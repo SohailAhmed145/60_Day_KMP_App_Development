@@ -74,6 +74,7 @@ fun NoteList(viewModel: NoteViewModel, navController: NavHostController){
     val notes by viewModel.notes.collectAsState(initial = emptyList())
 
     LazyVerticalStaggeredGrid(
+        modifier = Modifier.padding(start = 5.dp, end = 5.dp),
         columns = StaggeredGridCells.Fixed(2)) {
         items(items = notes){
             item -> NoteCard(

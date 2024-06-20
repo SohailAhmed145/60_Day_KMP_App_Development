@@ -26,6 +26,7 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import com.example.whynote.MyApplication
 import com.example.whynote.R
 import com.example.whynote.notes.data.room.NoteViewModel
 import kotlinx.coroutines.launch
@@ -127,6 +128,7 @@ fun NavigationDrawer(viewModel: NoteViewModel, navController: NavHostController)
 
     ){
 
+        MyApplication(myViewModel = viewModel, navController , drawerState)
 
 
     }

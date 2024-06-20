@@ -20,6 +20,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.whynote.notes.data.room.NoteViewModel
 import com.example.whynote.notes.data.room.NotesDB
 import com.example.whynote.notes.domain.repository.NoteRepository
+import com.example.whynote.notes.presentations.navigation_drawer.NavigationDrawer
 import com.example.whynote.ui.theme.WhyNoteTheme
 import com.example.whynote.notes.presentations.notes_screen.components.AppBarsTheme
 
@@ -41,7 +42,6 @@ class MainActivity : ComponentActivity() {
                 val repository = NoteRepository(db)
                 val myViewModel = NoteViewModel(repository = repository)
                 val navController = rememberNavController()
-                val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
 
 
 
@@ -52,7 +52,7 @@ class MainActivity : ComponentActivity() {
                             .padding(innerPadding)
                             .background(MaterialTheme.colorScheme.onPrimary)
                     ) {
-                        MyApplication(myViewModel, navController, drawerState )
+                        NavigationDrawer(myViewModel, navController)
                     }
 
                 }
