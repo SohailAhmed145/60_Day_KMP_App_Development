@@ -1,6 +1,5 @@
 package com.example.whynote.notes.presentations.notes_screen.components
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -13,7 +12,6 @@ import androidx.compose.foundation.lazy.staggeredgrid.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.CardElevation
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -79,7 +77,7 @@ fun NoteList(viewModel: NoteViewModel, navController: NavHostController){
         columns = StaggeredGridCells.Fixed(2)) {
         items(items = notes){
             item -> NoteCard(
-                viewModel = viewModel,
+                viewModel,
                 note = item,
                navController
             )

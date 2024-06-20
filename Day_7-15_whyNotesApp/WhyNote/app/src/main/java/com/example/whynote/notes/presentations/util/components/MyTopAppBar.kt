@@ -25,10 +25,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavHostController
 import com.example.whynote.R
-import com.example.whynote.notes.data.room.NoteViewModel
-import com.example.whynote.notes.presentations.navigation_drawer.NavigationDrawer
 import kotlinx.coroutines.launch
 
 
